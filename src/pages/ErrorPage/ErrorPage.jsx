@@ -1,11 +1,9 @@
-import { Container, Title } from './ErrorPage.styled';
+import React from 'react'
 
 const ErrorPage = () => {
   return (
-    <Container>
-      <Title>404</Title>
-    </Container>
-  );
-};
+    <div>ErrorPage</div>
+  )
+}
 
-export default ErrorPage;
+export default ErrorPage
