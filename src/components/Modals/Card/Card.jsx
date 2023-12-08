@@ -86,14 +86,12 @@ const Card = ({ selectedCar }) => {
           ))}
         </ul>
       </div>
-      <button
-        onClick={() => {
-          console.log('done');
-        }}
-        className="mt-6 w-[200px] p-3 rounded-[10px] bg-blue text-white"
+      <a
+       href='tel:+380730000000'
+        className="mt-6 w-[200px] p-3 rounded-[10px] bg-blue text-white text-center"
       >
         Rental car
-      </button>
+      </a>
     </div>
   );
 };

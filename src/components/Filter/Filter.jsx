@@ -1,10 +1,24 @@
 import { useFormik } from 'formik';
 import React, { useState } from 'react';
+import { useGetCarsQuery } from '../../redux/carsApi';
+import { useDispatch, useSelector } from "react-redux";
+import {
+  setFilterPrice,
+  setFilterBrand,
+  setFilterMileageFrom,
+  setFilterMileageTo
+ } from '../../redux/filterSlice';
 
 const hoverStyle =
   'transition duration-200 ease-in-out cursor-pointer hover:opacity-80';
 
 const Filter = () => {
+  const dispatch = useDispatch();
+
+  const { data: cars, isLoading } = useGetCarsQuery();
+  console.log(cars);
+
+
   const formik = useFormik({
     initialValues: {
       brand: '',
@@ -17,12 +31,11 @@ const Filter = () => {
     // validationSchema: userSchema,
 
     onSubmit: ({ brand, price, mileageFrom, mileageTo }) => {
-      return console.log({
-        brand,
-        price,
-        mileageFrom,
-        mileageTo,
-      });
+      dispatch(setFilterPrice(price))
+      dispatch(setFilterBrand(brand))
+      dispatch(setFilterMileageFrom(mileageFrom))
+      dispatch(setFilterMileageTo(mileageTo))
+
     },
   });
 
@@ -63,8 +76,11 @@ const Filter = () => {
                   onChange={formik.handleChange}
                 >
                   <option value="">Enter the text</option>
-                  <option value="brand1">Brand 1</option>
-                  <option value="brand2">Brand 2</option>
+                  {!isLoading && cars.filter((car, index, self) => (
+    self.findIndex(c => c.make === car.make) === index
+  )).map(car => {
+                    return (
+                  <option key={car.id} value={car.make}>{car.make}</option>)})}
                   {/* Add more options as needed */}
                 </select>
                 {errors['brand'] && (
@@ -90,10 +106,14 @@ const Filter = () => {
                   value={formikValues['price']}
                   onChange={formik.handleChange}
                 >
-                  <option value="">To 2$</option>
-                  <option value="price1">Brand 1</option>
-                  <option value="price2">Brand 2</option>
-                  {/* Add more options as needed */}
+                  <option value="To 2$">To 2$</option>
+                  <option value="To 15$">To 15$</option>
+                  <option value="To 30$">To 30$</option>
+                  <option value="To 50$">To 50$</option>
+                  <option value="To 70$">To 70$</option>
+                  <option value="To 100$">To 100$</option>
+                  <option value="To 150$">To 150$</option>
+                  <option value="To 500$">To 500$</option>
                 </select>
                 {errors['price'] && (
                   <p className={errorTextStyle}>{errors['price']}</p>
