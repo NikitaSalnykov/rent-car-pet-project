@@ -19,7 +19,7 @@ const List = ({ handleSelectedCar, onTogleLeavingModal }) => {
   const [favoriteStyle, setFavoriteStyle] = useState(
     useSelector(getFavorite) || []
   );
-  const [visibleCars, setVisibleCars] = useState(10);
+  const [visibleCars, setVisibleCars] = useState(12);
 
   const { data: cars, isLoading } = useGetCarsQuery();
   const filterBrand = useSelector(getFilterBrand);
@@ -86,7 +86,7 @@ const List = ({ handleSelectedCar, onTogleLeavingModal }) => {
   };
 
   const handleLoadMore = () => {
-    setVisibleCars((prevVisibleCars) => prevVisibleCars + 10);
+    setVisibleCars((prevVisibleCars) => prevVisibleCars + 12);
   };
 
   return (
