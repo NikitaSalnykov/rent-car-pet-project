@@ -48,10 +48,11 @@ const List = ({ handleSelectedCar, onTogleLeavingModal }) => {
     filtered = cars.filter((el) => el.make.includes(filterBrand));
 
     if (filterPrice.trim() !== '') {
-      filtered = filtered.filter(
-        (el) =>
-          +el.rentalPrice.replace(/\D/g, '') < +filterPrice.replace(/\D/g, '')
-      );
+      filtered = filtered.filter((el) => {
+        const carPrice = parseFloat(el.rentalPrice.replace(/\D/g, ''));
+        const filterPriceValue = parseFloat(filterPrice.replace(/\D/g, ''));
+        return carPrice < filterPriceValue;
+      });
     }
 
     if (filterMileageTo.trim() !== '') {
