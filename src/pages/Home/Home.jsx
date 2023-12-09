@@ -16,17 +16,19 @@ const Home = () => {
   };
 
   return (
-    <div className="container">
-      <Filter />
-      <List
-        handleSelectedCar={handleSelectedCar}
-        onTogleLeavingModal={onTogleLeavingModal}
-      />
+    <>
+      <div className="container">
+        <Filter />
+        <List
+          handleSelectedCar={handleSelectedCar}
+          onTogleLeavingModal={onTogleLeavingModal}
+        />
+      </div>
       <BasicModal isOpen={isModalOpen} onCloseModal={onTogleLeavingModal}>
         <Card selectedCar={selectedCar} />
         <div className="w-40 h-49 bg-black"></div>
       </BasicModal>
-    </div>
+    </>
   );
 };
 

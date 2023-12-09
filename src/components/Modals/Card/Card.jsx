@@ -1,7 +1,5 @@
 import { cutAddress } from '../../../helpers/cutAddress';
-
 const Card = ({ selectedCar }) => {
-  console.log(selectedCar);
   return (
     <div className="max-w-[541px] max-h-[752px] relative bg-white rounded-3xl flex flex-col justify-center">
       <div className=" overflow-hidden rounded-lg">
@@ -87,7 +85,7 @@ const Card = ({ selectedCar }) => {
         </ul>
       </div>
       <a
-       href='tel:+380730000000'
+        href="tel:+380730000000"
         className="mt-6 w-[200px] p-3 rounded-[10px] bg-blue text-white text-center"
       >
         Rental car

@@ -40,3 +40,8 @@ img {
 button {
   cursor: pointer;
 }
+
+.active {
+  border: 1px solid #ffffff;
+  background-color: #1111111f;
+}
